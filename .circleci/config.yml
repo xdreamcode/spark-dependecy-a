@@ -59,7 +59,7 @@ jobs:
     steps:
       - run:
           name: Sbt Release
-          command: circleci/commands/sbt/release.sh
+          command: .circleci/commands/sbt/release.sh
 workflows:
   version: 2
   build-and-release:
