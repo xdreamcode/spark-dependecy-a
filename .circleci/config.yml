@@ -65,8 +65,11 @@ jobs:
           name: Ls
           command: ls -a
       - run:
+          name: Chmod
+          command: chmod +x .circleci/commands/sbt-release.sh
+      - run:
           name: Sbt Release
-          command: .circleci/commands/sbt/release.sh
+          command: .circleci/commands/sbt-release.sh
 workflows:
   version: 2
   build-and-release:
