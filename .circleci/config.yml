@@ -57,6 +57,7 @@ jobs:
       JVM_OPTS: -Xmx3200m
       TERM: dumb
     steps:
+      - checkout
       - run:
           name: Pwd
           command: pwd
