@@ -63,7 +63,7 @@ jobs:
           command: pwd
       - run:
           name: Ls
-          command: ls
+          command: ls -a
       - run:
           name: Sbt Release
           command: .circleci/commands/sbt/release.sh
