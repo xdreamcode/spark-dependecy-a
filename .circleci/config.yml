@@ -44,4 +44,15 @@ jobs:
     steps:
       - run:
           name: Sbt Release
-          command: 'sbt release'
+          command: sbt 'release with-defaults'
+workflows:
+  version: 2
+  build-and-release:
+    jobs:
+      - build
+      - release:
+          requires:
+            - build
+          filters:
+            tags:
+              only: /^v.*/
