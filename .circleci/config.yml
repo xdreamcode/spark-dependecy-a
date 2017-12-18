@@ -40,15 +40,9 @@ jobs:
 
       # run tests!
       - run: cat /dev/null | sbt test:test
-  release:
+  deploy-snapshot:
     docker:
-      # specify the version you desire here
       - image: circleci/openjdk:8-jdk
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
 
     working_directory: ~/repo
 
@@ -59,30 +53,57 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Checkout master
-          command: git checkout master
-      - run:
-          name: Checkout tag
-          command: git checkout "$CIRCLE_BRANCH"
-      - run:
           name: Chmod
-          command: chmod +x .circleci/commands/sbt-release.sh
+          command: chmod +x .circleci/commands/deploy-snapshot.sh
       - run:
           name: Sbt Release
-          command: .circleci/commands/sbt-release.sh
+          command: .circleci/commands/deploy-snapshot.sh
+
+  deploy-release:
+    docker:
+      - image: circleci/openjdk:8-jdk
+
+    working_directory: ~/repo
+
+    environment:
+      # Customize the JVM maximum heap limit
+      JVM_OPTS: -Xmx3200m
+      TERM: dumb
+    steps:
+      - checkout
+      - run:
+          name: Chmod
+          command: chmod +x .circleci/commands/deploy-release.sh
+      - run:
+          name: Sbt Release
+          command: .circleci/commands/deploy-release.sh
 workflows:
   version: 2
-  build-and-release:
+  snapshot-deployment:
     jobs:
       - build:
           filters:
-            tags:
-              only: /^v.*/
-      - release:
+            branches:
+              only:
+               - develop
+      - deploy-snapshot:
           requires:
             - build
           filters:
-            tags:
-              only: /^v.*/
             branches:
-              ignore: /.*/
+              only:
+               - develop
+  release-deployment:
+     jobs:
+       - build:
+           filters:
+             branches:
+               only:
+                - master
+       - deploy-snapshot:
+           requires:
+             - build
+           filters:
+             branches:
+               only:
+                - master
