@@ -66,6 +66,9 @@ jobs:
           name: Sbt Release
           command: .circleci/commands/deploy-release.sh
   deploy-databricks:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    working_directory: ~/repo
     steps:
       - run:
           name: Rest API
