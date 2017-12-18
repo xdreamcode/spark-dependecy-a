@@ -10,4 +10,6 @@ class CustomTransformationExample {
       //This is some feature
     }
   }
+
+  //Another
 }
