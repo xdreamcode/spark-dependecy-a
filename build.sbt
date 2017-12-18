@@ -1,7 +1,5 @@
 name := "spark-dependecy-a"
 
-version := "0.1.3"
-
 scalaVersion := "2.11.12"
 
 organization := "io.dreamcode"
