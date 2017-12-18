@@ -6,6 +6,7 @@ class CustomTransformationExample {
   def snakeCaseColumns(df: DataFrame): DataFrame = {
     df.columns.foldLeft(df) { (memoDF, colName) =>
       memoDF.withColumnRenamed(colName, "")
+      //Pruebilla
     }
   }
 }
