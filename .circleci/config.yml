@@ -72,7 +72,7 @@ jobs:
     steps:
       - run:
           name: Rest API
-          command: echo "No yet implemented but use this: https://docs.databricks.com/api/latest/libraries.html"
+          command: echo 'No yet implemented but use this: https://docs.databricks.com/api/latest/libraries.html'
 workflows:
   version: 2
   snapshot-deployment:
