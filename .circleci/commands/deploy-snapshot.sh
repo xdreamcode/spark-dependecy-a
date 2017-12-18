@@ -2,4 +2,4 @@
 pwd
 git config --global user.name "Xavier Ramirez"
 git config --global user.email "xavier@dreamcode.io"
-sbt 'release with-defaults'
+sbt publish
