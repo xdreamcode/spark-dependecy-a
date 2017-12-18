@@ -1,3 +1,5 @@
+import ReleaseTransformations._
+
 name := "spark-dependecy-a"
 
 scalaVersion := "2.11.12"
@@ -14,6 +16,20 @@ publishTo := {
   else
     Some("releases"  at nexus + "maven-releases/")
 }
+
+releaseProcess := Seq(
+  checkSnapshotDependencies,
+  inquireVersions,
+  runClean,
+  runTest,
+  setReleaseVersion,
+  commitReleaseVersion,
+  tagRelease,
+  publishArtifacts,
+  setNextVersion,
+  commitNextVersion
+)
+
 
 credentials += Credentials("Sonatype Nexus Repository Manager", "35.168.35.94", "admin", "admin123")
 
