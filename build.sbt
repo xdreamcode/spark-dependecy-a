@@ -1,6 +1,6 @@
 name := "spark-dependecy-a"
 
-version := "0.2-SNAPSHOT"
+version := "0.0.2-SNAPSHOT"
 
 scalaVersion := "2.11.12"
 
