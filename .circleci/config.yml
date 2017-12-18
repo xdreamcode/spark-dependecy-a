@@ -59,11 +59,11 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Pwd
-          command: pwd
+          name: Checkout master
+          command: git checkout master
       - run:
-          name: Ls
-          command: ls -a
+          name: Checkout tag
+          command: git checkout "$CIRCLE_BRANCH"
       - run:
           name: Chmod
           command: chmod +x .circleci/commands/sbt-release.sh
