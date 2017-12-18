@@ -58,6 +58,12 @@ jobs:
       TERM: dumb
     steps:
       - run:
+          name: Pwd
+          command: pwd
+      - run:
+          name: Ls
+          command: ls
+      - run:
           name: Sbt Release
           command: .circleci/commands/sbt/release.sh
 workflows:
