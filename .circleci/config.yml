@@ -104,5 +104,9 @@ workflows:
                only:
                 - master
        - deploy-databricks:
-            requires:
+           requires:
              - deploy-release
+           filters:
+             branches:
+               only:
+                - master
