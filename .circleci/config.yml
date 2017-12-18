@@ -40,3 +40,8 @@ jobs:
 
       # run tests!
       - run: cat /dev/null | sbt test:test
+  release:
+    steps:
+      - run:
+          name: Sbt Release
+          command: 'sbt release'
