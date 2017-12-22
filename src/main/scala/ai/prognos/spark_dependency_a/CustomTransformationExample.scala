@@ -7,7 +7,8 @@ class CustomTransformationExample {
     df.columns.foldLeft(df) { (memoDF, colName) =>
       memoDF.withColumnRenamed(colName, "")
 
-      //This is some feature
+      //This is feature/fCod0
+
     }
   }
 
