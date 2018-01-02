@@ -4,6 +4,9 @@ name := "spark-dependecy-a"
 
 scalaVersion := "2.11.12"
 
+version := "0.5.1"
+
+
 organization := "io.dreamcode"
 
 updateOptions := updateOptions.value.withGigahorse(false)
